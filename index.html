@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save the Date – Clara &amp; Tyler</title>
+    <meta
+      name="description"
+      content="Save the date for the wedding celebration of Clara &amp; Alex."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero" id="top">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <p class="hero-kicker">Save the Date</p>
+          <h1 class="hero-title">
+            Clara<br />
+            <span class="ampersand">&amp;</span> Tyler
+          </h1>
+          <p class="hero-subtitle">are tying the knot</p>
+
+          <div class="hero-details">
+            <p class="hero-date">September 20, 2026</p>
+            <p class="hero-location">San Francisco, California</p>
+          </div>
+
+          <a href="#rsvp" class="primary-button">RSVP</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="section" id="details">
+          <div class="section-inner section-grid">
+            <div class="card card-soft">
+              <h2>Our Day</h2>
+              <p class="lead">
+                We would be honored to have you with us as we celebrate our
+                wedding surrounded by family and friends.
+              </p>
+              <div class="detail-row">
+                <div>
+                  <h3>Ceremony</h3>
+                  <p>3:30 PM &middot; Garden Terrace</p>
+                </div>
+                <div>
+                  <h3>Reception</h3>
+                  <p>5:30 PM &middot; Grand Ballroom</p>
+                </div>
+              </div>
+              <p class="note">
+                Formal invitation with full details to follow. Please save the
+                date and let us know if you can join.
+              </p>
+            </div>
+
+            <div class="card card-outline">
+              <h2>Travel &amp; Stay</h2>
+              <p>
+                We recommend arriving in San Francisco by Friday evening to
+                enjoy the city and avoid any last-minute travel stress.
+              </p>
+              <ul class="list">
+                <li>
+                  <span class="list-label">Venue</span>
+                  <span class="list-value">The Conservatory on the Bay</span>
+                </li>
+                <li>
+                  <span class="list-label">Nearby Hotels</span>
+                  <span class="list-value">Union Square &amp; Embarcadero</span>
+                </li>
+                <li>
+                  <span class="list-label">Dress Code</span>
+                  <span class="list-value">Cocktail / Semi-formal</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-accent" id="rsvp">
+          <div class="section-inner section-grid section-grid--reverse">
+            <div class="card card-soft">
+              <h2>RSVP</h2>
+              <p class="lead">
+                Please let us know if you will be able to celebrate with us.
+              </p>
+              <form id="rsvp-form" novalidate>
+                <div class="form-row">
+                  <label for="name">Name<span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    placeholder="Your full name"
+                  />
+                  <p class="field-error" data-for="name"></p>
+                </div>
+
+                <div class="form-row">
+                  <label for="email"
+                    >Email<span class="required">*</span></label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    placeholder="you@example.com"
+                  />
+                  <p class="field-error" data-for="email"></p>
+                </div>
+
+                <div class="form-row">
+                  <label for="attending"
+                    >Will you be attending?<span class="required">*</span></label
+                  >
+                  <select id="attending" name="attending" required>
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes, joyfully accepting</option>
+                    <option value="no">Regretfully declining</option>
+                  </select>
+                  <p class="field-error" data-for="attending"></p>
+                </div>
+
+                <div class="form-row form-row--split">
+                  <div>
+                    <label for="guests">Number of guests</label>
+                    <input
+                      type="number"
+                      id="guests"
+                      name="guests"
+                      min="1"
+                      max="10"
+                      placeholder="1"
+                    />
+                    <p class="field-hint">
+                      Include yourself and anyone in your household.
+                    </p>
+                  </div>
+                  <div>
+                    <label for="diet">Dietary notes</label>
+                    <input
+                      type="text"
+                      id="diet"
+                      name="diet"
+                      placeholder="Allergies or preferences"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="message">Message for the couple</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="3"
+                    placeholder="We'd love to hear from you!"
+                  ></textarea>
+                </div>
+
+                <div class="form-footer">
+                  <button type="submit" class="primary-button">
+                    Submit RSVP
+                  </button>
+                  <p class="form-status" id="form-status" aria-live="polite"></p>
+                </div>
+
+                <p class="form-note">
+                  This form runs entirely in your browser. To receive RSVPs by
+                  email or a spreadsheet, connect it to a service such as
+                  Formspree, Google Forms, or your own backend. See
+                  <span class="inline-code">README.md</span> for details.
+                </p>
+              </form>
+            </div>
+
+            <div class="card card-outline">
+              <h2>Add to Your Calendar</h2>
+              <p>
+                Mark your calendar so you don't miss the celebration. Times are
+                approximate and will be confirmed with the formal invitation.
+              </p>
+              <div class="calendar-links">
+                <a
+                  href="#"
+                  class="calendar-chip"
+                  id="google-calendar-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Google Calendar
+                </a>
+                <a
+                  href="#"
+                  class="calendar-chip"
+                  id="ics-download-link"
+                  download="clara-alex-wedding.ics"
+                >
+                  Download .ics
+                </a>
+              </div>
+              <p class="note">
+                If these links don't open correctly, you can add the date
+                manually: <strong>September 20, 2026 at 3:30 PM</strong> in San
+                Francisco, CA.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <p>With love,</p>
+          <p class="footer-names">Clara &amp; Tyler</p>
+          <a href="#top" class="footer-link">Back to top</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
