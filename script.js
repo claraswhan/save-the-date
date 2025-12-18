@@ -46,8 +46,7 @@ const translations = {
     label_message: "Message for the couple",
     placeholder_message: "We'd love to hear from you!",
     submit_rsvp: "Submit RSVP",
-    form_note:
-      'This form runs entirely in your browser. To receive RSVPs by email or a spreadsheet, connect it to a service such as Formspree, Google Forms, or your own backend. See <span class="inline-code">README.md</span> for details.',
+    form_note: "This form is powered by Formspree.",
     calendar_title: "Add to Your Calendar",
     calendar_lead:
       "Mark your calendar so you don't miss the celebration. Times are approximate and will be confirmed with the formal invitation.",
@@ -57,8 +56,8 @@ const translations = {
     manual_location: "Seoul, South Korea",
     footer_love: "With love,",
     back_to_top: "Back to top",
-    status_success: "Thank you! Your RSVP has been recorded in this browser.",
-    status_error: "Please fix the highlighted fields and try submitting again.",
+    status_success: "Thank you! Your RSVP has been sent successfully.",
+    status_error: "Oops! There was a problem submitting your form. Please try again.",
     error_name: "Please enter your name.",
     error_email_empty: "Please enter your email.",
     error_email_invalid: "Please enter a valid email.",
@@ -109,8 +108,7 @@ const translations = {
     label_message: "축하 메시지",
     placeholder_message: "신랑 신부에게 전하고 싶은 말을 남겨주세요.",
     submit_rsvp: "RSVP 전송",
-    form_note:
-      '본 양식은 브라우저에서만 작동합니다. 실제로 RSVP를 받으려면 Formspree, Google Forms 등의 서비스를 연결해야 합니다. 자세한 내용은 <span class="inline-code">README.md</span>를 참조하세요.',
+    form_note: "본 양식은 Formspree를 통해 제출됩니다.",
     calendar_title: "캘린더에 추가",
     calendar_lead: "일정을 잊지 않도록 캘린더에 등록해두세요.",
     google_cal: "구글 캘린더",
@@ -119,8 +117,8 @@ const translations = {
     manual_location: "대한민국 서울",
     footer_love: "사랑을 담아,",
     back_to_top: "맨 위로",
-    status_success: "감사합니다! RSVP가 정상적으로 기록되었습니다.",
-    status_error: "입력 내용을 확인하고 다시 시도해주세요.",
+    status_success: "감사합니다! RSVP가 성공적으로 전송되었습니다.",
+    status_error: "죄송합니다. 전송 중 오류가 발생했습니다. 다시 시도해주세요.",
     error_name: "성함을 입력해주세요.",
     error_email_empty: "이메일을 입력해주세요.",
     error_email_invalid: "올바른 이메일 형식을 입력해주세요.",
@@ -273,11 +271,43 @@ function setupRSVPForm() {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    console.log("RSVP submission (no backend configured):", data);
+    // Show loading state
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = currentLang === "en" ? "Sending..." : "전송 중...";
 
-    showStatus(t.status_success, "success");
-
-    form.reset();
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          showStatus(t.status_success, "success");
+          form.reset();
+        } else {
+          response.json().then((data) => {
+            if (Object.hasOwn(data, "errors")) {
+              showStatus(
+                data["errors"].map((error) => error["message"]).join(", "),
+                "error"
+              );
+            } else {
+              showStatus(t.status_error, "error");
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        showStatus(t.status_error, "error");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
   });
 }
 
