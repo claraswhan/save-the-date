@@ -20,9 +20,10 @@ const translations = {
     travel_lead:
       "We recommend arriving in Seoul by Friday evening to enjoy the city and avoid any last-minute travel stress.",
     address_label: "Address",
+    address_value: "249, Dongho-ro, Jung-gu, Seoul, Korea 04605",
     transport_label: "Public Transportation",
     transport_value:
-      "Subway: Line 3 Dongdae Station Exit 5<br />* Shuttles are provided from the hotel at Exit 5",
+      "Dongguk University Station (Line 3), Exit 5<br />* Shuttles are provided from the hotel at Exit 5",
     parking_label: "Parking",
     parking_value:
       "There is limited parking available at the hotel. We recommend using public transportation.<br /><br />If you need to park, please use Valet Parking Service (additional fee).",
@@ -56,6 +57,12 @@ const translations = {
     manual_location: "Seoul, South Korea",
     footer_love: "With love,",
     back_to_top: "Back to top",
+    status_success: "Thank you! Your RSVP has been recorded in this browser.",
+    status_error: "Please fix the highlighted fields and try submitting again.",
+    error_name: "Please enter your name.",
+    error_email_empty: "Please enter your email.",
+    error_email_invalid: "Please enter a valid email.",
+    error_attending: "Please select an option.",
   },
   ko: {
     lang_btn: "English",
@@ -72,10 +79,11 @@ const translations = {
     reception_details: "오후 5:30 · 그랜드 볼룸",
     our_day_note:
       "정식 청첩장은 추후에 전달드릴 예정입니다. 일정을 확인해주시고 참석 여부를 알려주시면 감사하겠습니다.",
-    travel_title: "오시는 길 및 숙박",
+    travel_title: "오시는 길",
     travel_lead:
       "금요일 저녁까지 서울에 도착하시면 여유롭게 예식을 준비하실 수 있습니다.",
     address_label: "주소",
+    address_value: "서울특별시 중구 동호로 249 (장충동2가)",
     transport_label: "대중교통",
     transport_value:
       "지하철: 3호선 동대입구역 5번 출구<br />* 5번 출구에서 호텔 셔틀버스가 운행됩니다.",
@@ -84,9 +92,25 @@ const translations = {
       "호텔 내 주차 공간이 협소하오니 가급적 대중교통 이용을 권장합니다.<br /><br />주차 시 발렛 파킹 서비스를 이용하실 수 있습니다 (유료).",
     dress_code_label: "드레스 코드",
     dress_code_value: "칵테일 / 세미 포멀",
-    rsvp_title: "참석 여부 (RSVP)",
+    rsvp_title: "RSVP",
     rsvp_lead: "참석 여부를 알려주세요.",
-    form_note: "본 양식은 구글 설문지를 통해 제출됩니다.",
+    label_name: "성함",
+    placeholder_name: "성함을 입력해주세요",
+    label_email: "이메일",
+    placeholder_email: "you@example.com",
+    label_attending: "참석 여부",
+    opt_select: "선택해주세요",
+    opt_yes: "참석합니다",
+    opt_no: "참석이 어렵습니다",
+    label_guests: "동반 인원",
+    guests_hint: "본인을 포함한 총 인원을 입력해주세요.",
+    label_diet: "식사 관련 참고사항",
+    placeholder_diet: "알레르기 또는 기타 요청사항",
+    label_message: "축하 메시지",
+    placeholder_message: "신랑 신부에게 전하고 싶은 말을 남겨주세요.",
+    submit_rsvp: "RSVP 전송",
+    form_note:
+      '본 양식은 브라우저에서만 작동합니다. 실제로 RSVP를 받으려면 Formspree, Google Forms 등의 서비스를 연결해야 합니다. 자세한 내용은 <span class="inline-code">README.md</span>를 참조하세요.',
     calendar_title: "캘린더에 추가",
     calendar_lead: "일정을 잊지 않도록 캘린더에 등록해두세요.",
     google_cal: "구글 캘린더",
@@ -95,6 +119,12 @@ const translations = {
     manual_location: "대한민국 서울",
     footer_love: "사랑을 담아,",
     back_to_top: "맨 위로",
+    status_success: "감사합니다! RSVP가 정상적으로 기록되었습니다.",
+    status_error: "입력 내용을 확인하고 다시 시도해주세요.",
+    error_name: "성함을 입력해주세요.",
+    error_email_empty: "이메일을 입력해주세요.",
+    error_email_invalid: "올바른 이메일 형식을 입력해주세요.",
+    error_attending: "참석 여부를 선택해주세요.",
   },
 };
 
@@ -109,6 +139,14 @@ function updateLanguage(lang) {
     const key = el.getAttribute("data-t");
     if (t[key]) {
       el.innerHTML = t[key];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll("[data-t-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-t-placeholder");
+    if (t[key]) {
+      el.setAttribute("placeholder", t[key]);
     }
   });
 
@@ -135,7 +173,113 @@ function setupLanguageToggle() {
   });
 }
 
-// Calendar links logic
+// Basic client-side RSVP handling & calendar links
+
+function setupRSVPForm() {
+  const form = document.getElementById("rsvp-form");
+  const statusEl = document.getElementById("form-status");
+
+  if (!form || !statusEl) return;
+
+  const showStatus = (message, type) => {
+    statusEl.textContent = message;
+    statusEl.classList.remove("form-status--success", "form-status--error");
+    if (type === "success") {
+      statusEl.classList.add("form-status--success");
+    } else if (type === "error") {
+      statusEl.classList.add("form-status--error");
+    }
+  };
+
+  const validators = {
+    name: (value) => {
+      const t = translations[currentLang];
+      if (!value.trim()) return t.error_name;
+      return "";
+    },
+    email: (value) => {
+      const t = translations[currentLang];
+      if (!value.trim()) return t.error_email_empty;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(value)) return t.error_email_invalid;
+      return "";
+    },
+    attending: (value) => {
+      const t = translations[currentLang];
+      if (!value) return t.error_attending;
+      return "";
+    },
+  };
+
+  const validateField = (input) => {
+    const name = input.name;
+    if (!validators[name]) return "";
+
+    const errorMessage = validators[name](input.value);
+    const errorEl = form.querySelector(`.field-error[data-for="${name}"]`);
+    if (errorEl) {
+      errorEl.textContent = errorMessage;
+      errorEl.classList.toggle("hidden", !errorMessage);
+    }
+    if (errorMessage) {
+      input.setAttribute("aria-invalid", "true");
+    } else {
+      input.removeAttribute("aria-invalid");
+    }
+    return errorMessage;
+  };
+
+  form.addEventListener("input", (event) => {
+    const target = event.target;
+    if (
+      target instanceof HTMLInputElement ||
+      target instanceof HTMLSelectElement ||
+      target instanceof HTMLTextAreaElement
+    ) {
+      if (validators[target.name]) {
+        validateField(target);
+      }
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    showStatus("", "");
+
+    const t = translations[currentLang];
+
+    const requiredInputs = ["name", "email", "attending"].map((name) =>
+      form.elements.namedItem(name)
+    );
+
+    let hasError = false;
+    requiredInputs.forEach((el) => {
+      if (
+        el instanceof HTMLInputElement ||
+        el instanceof HTMLSelectElement ||
+        el instanceof HTMLTextAreaElement
+      ) {
+        const error = validateField(el);
+        if (error) hasError = true;
+      }
+    });
+
+    if (hasError) {
+      showStatus(t.status_error, "error");
+      return;
+    }
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    console.log("RSVP submission (no backend configured):", data);
+
+    showStatus(t.status_success, "success");
+
+    form.reset();
+  });
+}
 
 function setupCalendarLinks() {
   const googleLink = document.getElementById("google-calendar-link");
@@ -187,8 +331,6 @@ function setupCalendarLinks() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupLanguageToggle();
+  setupRSVPForm();
   setupCalendarLinks();
 });
-
-
-

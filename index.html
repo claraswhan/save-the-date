@@ -74,12 +74,12 @@
               <ul class="list">
                 <li>
                   <span class="list-label" data-t="address_label">Address</span>
-                  <span class="list-value">서울특별시 중구 동호로 249 (장충동2가)</span>
+                  <span class="list-value" data-t="address_value">249, Dongho-ro, Jung-gu, Seoul, Korea 04605</span>
                 </li>
                 <li>
                   <span class="list-label" data-t="transport_label">Public Transportation</span>
                   <span class="list-value" data-t="transport_value">
-                    Subway: Line 3 Dongdae Station Exit 5<br />
+                    Dongguk University Station (Line 3), Exit 5<br />
                     * Shuttles are provided from the hotel at Exit 5
                   </span>
                 </li>
@@ -106,23 +106,97 @@
               <p class="lead" data-t="rsvp_lead">
                 Please let us know if you will be able to celebrate with us.
               </p>
-              
-              <div class="form-embed-container">
-                <iframe 
-                  src="https://docs.google.com/forms/d/e/1FAIpQLSdwC4q8S_3u6lR6x3B_YOUR_FORM_ID/viewform?embedded=true" 
-                  width="100%" 
-                  height="800" 
-                  frameborder="0" 
-                  marginheight="0" 
-                  marginwidth="0"
-                  class="google-form-iframe">
-                  Loading…
-                </iframe>
-              </div>
+              <form id="rsvp-form" novalidate>
+                <div class="form-row">
+                  <label for="name"><span data-t="label_name">Name</span><span class="required">*</span></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    placeholder="Your full name"
+                    data-t-placeholder="placeholder_name"
+                  />
+                  <p class="field-error" data-for="name"></p>
+                </div>
 
-              <p class="form-note" data-t="form_note">
-                This form is powered by Google Forms.
-              </p>
+                <div class="form-row">
+                  <label for="email"><span data-t="label_email">Email</span><span class="required">*</span></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    placeholder="you@example.com"
+                    data-t-placeholder="placeholder_email"
+                  />
+                  <p class="field-error" data-for="email"></p>
+                </div>
+
+                <div class="form-row">
+                  <label for="attending"><span data-t="label_attending">Will you be attending?</span><span class="required">*</span></label>
+                  <select id="attending" name="attending" required>
+                    <option value="" data-t="opt_select">Select an option</option>
+                    <option value="yes" data-t="opt_yes">Yes, joyfully accepting</option>
+                    <option value="no" data-t="opt_no">Regretfully declining</option>
+                  </select>
+                  <p class="field-error" data-for="attending"></p>
+                </div>
+
+                <div class="form-row form-row--split">
+                  <div>
+                    <label for="guests" data-t="label_guests">Number of guests</label>
+                    <input
+                      type="number"
+                      id="guests"
+                      name="guests"
+                      min="1"
+                      max="10"
+                      placeholder="1"
+                    />
+                    <p class="field-hint" data-t="guests_hint">
+                      Include yourself and anyone in your household.
+                    </p>
+                  </div>
+                  <div>
+                    <label for="diet" data-t="label_diet">Dietary notes</label>
+                    <input
+                      type="text"
+                      id="diet"
+                      name="diet"
+                      placeholder="Allergies or preferences"
+                      data-t-placeholder="placeholder_diet"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="message" data-t="label_message">Message for the couple</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="3"
+                    placeholder="We'd love to hear from you!"
+                    data-t-placeholder="placeholder_message"
+                  ></textarea>
+                </div>
+
+                <div class="form-footer">
+                  <button type="submit" class="primary-button" data-t="submit_rsvp">
+                    Submit RSVP
+                  </button>
+                  <p class="form-status" id="form-status" aria-live="polite"></p>
+                </div>
+
+                <p class="form-note" data-t="form_note">
+                  This form runs entirely in your browser. To receive RSVPs by
+                  email or a spreadsheet, connect it to a service such as
+                  Formspree, Google Forms, or your own backend. See
+                  <span class="inline-code">README.md</span> for details.
+                </p>
+              </form>
             </div>
 
             <div class="card card-outline">
