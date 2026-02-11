@@ -15,18 +15,23 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Clara & Tyler</a>
             <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="our-story.html">Our Story</a>
-                <a href="events.html">Events</a>
-                <a href="travel.html">Travel</a>
-                <a href="photos.html">Photos</a>
-                <a href="rsvp.html">RSVP</a>
+                <a href="index.html" class="active" data-i18n="nav.home">Home</a>
+                <a href="our-story.html" data-i18n="nav.ourStory">Our Story</a>
+                <a href="events.html" data-i18n="nav.events">Events</a>
+                <a href="travel.html" data-i18n="nav.travel">Travel</a>
+                <a href="photos.html" data-i18n="nav.photos">Photos</a>
+                <a href="rsvp.html" data-i18n="nav.rsvp">RSVP</a>
             </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+                    <span data-i18n="lang.en">EN</span> / <span data-i18n="lang.ko">한국어</span>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -40,11 +45,11 @@
                     <span class="ampersand">&</span>
                     <span class="name">Tyler</span>
                 </h1>
-                <p class="hero-date">December 12, 2026</p>
-                <p class="hero-location">Seoul, South Korea</p>
+                <p class="hero-date" data-i18n="hero.date">December 12, 2026</p>
+                <p class="hero-location" data-i18n="hero.location">Seoul, South Korea</p>
                 <div class="hero-cta">
-                    <a href="rsvp.html" class="btn btn-primary">RSVP</a>
-                    <a href="events.html" class="btn btn-secondary">View Events</a>
+                    <a href="rsvp.html" class="btn btn-primary" data-i18n="hero.rsvp">RSVP</a>
+                    <a href="events.html" class="btn btn-secondary" data-i18n="hero.viewEvents">View Events</a>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -58,12 +63,12 @@
         <section class="welcome-section">
             <div class="container">
                 <div class="welcome-content">
-                    <h2 class="section-title">We're Getting Married!</h2>
-                    <p class="welcome-text">
+                    <h2 class="section-title" data-i18n="welcome.title">We're Getting Married!</h2>
+                    <p class="welcome-text" data-i18n="welcome.text1">
                         We are so excited to celebrate this special day with our family and friends. 
                         We can't wait to share this moment with you and create beautiful memories together.
                     </p>
-                    <p class="welcome-text">
+                    <p class="welcome-text" data-i18n="welcome.text2">
                         Please join us on December 12, 2026 in Seoul, South Korea for our wedding celebration.
                     </p>
                 </div>
@@ -75,14 +80,14 @@
             <div class="container">
                 <div class="save-date-card">
                     <div class="save-date-content">
-                        <h2>Save the Date</h2>
+                        <h2 data-i18n="saveDate.title">Save the Date</h2>
                         <div class="date-display">
-                            <div class="date-month">December</div>
+                            <div class="date-month" data-i18n="saveDate.month">December</div>
                             <div class="date-day">12</div>
                             <div class="date-year">2026</div>
                         </div>
-                        <p class="save-date-location">Shilla Hotel, Seoul</p>
-                        <a href="events.html" class="btn btn-outline">View Event Details</a>
+                        <p class="save-date-location" data-i18n="saveDate.location">Shilla Hotel, Seoul</p>
+                        <a href="events.html" class="btn btn-outline" data-i18n="saveDate.viewDetails">View Event Details</a>
                     </div>
                 </div>
             </div>
@@ -94,28 +99,28 @@
                 <div class="quick-links-grid">
                     <a href="our-story.html" class="quick-link-card">
                         <div class="quick-link-icon">💕</div>
-                        <h3>Our Story</h3>
-                        <p>Learn about our journey together</p>
+                        <h3 data-i18n="quickLinks.ourStory.title">Our Story</h3>
+                        <p data-i18n="quickLinks.ourStory.desc">Learn about our journey together</p>
                     </a>
                     <a href="events.html" class="quick-link-card">
                         <div class="quick-link-icon">📅</div>
-                        <h3>Events</h3>
-                        <p>View the wedding schedule</p>
+                        <h3 data-i18n="quickLinks.events.title">Events</h3>
+                        <p data-i18n="quickLinks.events.desc">View the wedding schedule</p>
                     </a>
                     <a href="travel.html" class="quick-link-card">
                         <div class="quick-link-icon">✈️</div>
-                        <h3>Travel</h3>
-                        <p>Accommodations & directions</p>
+                        <h3 data-i18n="quickLinks.travel.title">Travel</h3>
+                        <p data-i18n="quickLinks.travel.desc">Accommodations & directions</p>
                     </a>
                     <a href="photos.html" class="quick-link-card">
                         <div class="quick-link-icon">📸</div>
-                        <h3>Photos</h3>
-                        <p>Share your memories</p>
+                        <h3 data-i18n="quickLinks.photos.title">Photos</h3>
+                        <p data-i18n="quickLinks.photos.desc">Share your memories</p>
                     </a>
                     <a href="rsvp.html" class="quick-link-card">
                         <div class="quick-link-icon">✉️</div>
-                        <h3>RSVP</h3>
-                        <p>Let us know you're coming</p>
+                        <h3 data-i18n="quickLinks.rsvp.title">RSVP</h3>
+                        <p data-i18n="quickLinks.rsvp.desc">Let us know you're coming</p>
                     </a>
                 </div>
             </div>
@@ -124,7 +129,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">With love,</p>
+            <p class="footer-text" data-i18n="footer.withLove">With love,</p>
             <p class="footer-names">Clara & Tyler</p>
             <p class="footer-copy">&copy; 2026 Clara & Tyler</p>
         </div>

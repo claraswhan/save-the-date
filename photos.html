@@ -15,33 +15,38 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Clara & Tyler</a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="our-story.html">Our Story</a>
-                <a href="events.html">Events</a>
-                <a href="travel.html">Travel</a>
-                <a href="photos.html" class="active">Photos</a>
-                <a href="rsvp.html">RSVP</a>
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="our-story.html" data-i18n="nav.ourStory">Our Story</a>
+                <a href="events.html" data-i18n="nav.events">Events</a>
+                <a href="travel.html" data-i18n="nav.travel">Travel</a>
+                <a href="photos.html" class="active" data-i18n="nav.photos">Photos</a>
+                <a href="rsvp.html" data-i18n="nav.rsvp">RSVP</a>
             </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+                    <span data-i18n="lang.en">EN</span> / <span data-i18n="lang.ko">한국어</span>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <main>
         <section class="page-hero">
             <div class="container">
-                <h1 class="page-title">Photos</h1>
-                <p class="page-subtitle">Share your memories with us</p>
+                <h1 class="page-title" data-i18n="photos.pageTitle">Photos</h1>
+                <p class="page-subtitle" data-i18n="photos.pageSubtitle">Share your memories with us</p>
             </div>
         </section>
 
         <section class="photos-section">
             <div class="container">
                 <div class="photos-intro">
-                    <p>
+                    <p data-i18n="photos.intro">
                         We'd love to see your photos from our wedding! Share your favorite moments using 
                         the hashtag <strong>#ClaraAndTyler2026</strong> on social media, or upload them directly 
                         to our photo gallery.
@@ -49,12 +54,12 @@
                 </div>
 
                 <div class="photos-upload">
-                    <h3>Upload Your Photos</h3>
-                    <p>Have photos from the wedding? Share them with us!</p>
+                    <h3 data-i18n="photos.upload.title">Upload Your Photos</h3>
+                    <p data-i18n="photos.upload.text">Have photos from the wedding? Share them with us!</p>
                     <form class="upload-form">
                         <input type="file" id="photo-upload" multiple accept="image/*" style="display: none;">
-                        <label for="photo-upload" class="btn btn-primary">Choose Photos</label>
-                        <button type="submit" class="btn btn-secondary">Upload</button>
+                        <label for="photo-upload" class="btn btn-primary" data-i18n="photos.upload.choose">Choose Photos</label>
+                        <button type="submit" class="btn btn-secondary" data-i18n="photos.upload.submit">Upload</button>
                     </form>
                 </div>
 
@@ -86,8 +91,8 @@
                 </div>
 
                 <div class="photos-social">
-                    <h3>Follow Our Hashtag</h3>
-                    <p>Check out photos shared by our guests on social media:</p>
+                    <h3 data-i18n="photos.social.title">Follow Our Hashtag</h3>
+                    <p data-i18n="photos.social.text">Check out photos shared by our guests on social media:</p>
                     <div class="social-tags">
                         <span class="hashtag">#ClaraAndTyler2026</span>
                         <span class="hashtag">#ClaraTylerWedding</span>
@@ -99,7 +104,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">With love,</p>
+            <p class="footer-text" data-i18n="footer.withLove">With love,</p>
             <p class="footer-names">Clara & Tyler</p>
             <p class="footer-copy">&copy; 2026 Clara & Tyler</p>
         </div>

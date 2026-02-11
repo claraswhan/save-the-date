@@ -15,26 +15,31 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Clara & Tyler</a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="our-story.html">Our Story</a>
-                <a href="events.html" class="active">Events</a>
-                <a href="travel.html">Travel</a>
-                <a href="photos.html">Photos</a>
-                <a href="rsvp.html">RSVP</a>
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="our-story.html" data-i18n="nav.ourStory">Our Story</a>
+                <a href="events.html" class="active" data-i18n="nav.events">Events</a>
+                <a href="travel.html" data-i18n="nav.travel">Travel</a>
+                <a href="photos.html" data-i18n="nav.photos">Photos</a>
+                <a href="rsvp.html" data-i18n="nav.rsvp">RSVP</a>
             </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+                    <span data-i18n="lang.en">EN</span> / <span data-i18n="lang.ko">한국어</span>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <main>
         <section class="page-hero">
             <div class="container">
-                <h1 class="page-title">Wedding Events</h1>
-                <p class="page-subtitle">Join us for a weekend of celebration</p>
+                <h1 class="page-title" data-i18n="events.pageTitle">Wedding Events</h1>
+                <p class="page-subtitle" data-i18n="events.pageSubtitle">Join us for a weekend of celebration</p>
             </div>
         </section>
 
@@ -44,12 +49,12 @@
                     <div class="event-card">
                         <div class="event-date">
                             <span class="date-day">12</span>
-                            <span class="date-month">December</span>
+                            <span class="date-month" data-i18n="events.month.december">December</span>
                             <span class="date-year">2026</span>
                         </div>
                         <div class="event-content">
-                            <div class="event-badge">Ceremony</div>
-                            <h3>Wedding Ceremony</h3>
+                            <div class="event-badge" data-i18n="events.ceremony.badge">Ceremony</div>
+                            <h3 data-i18n="events.ceremony.title">Wedding Ceremony</h3>
                             <div class="event-details">
                                 <div class="detail-item">
                                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -72,10 +77,10 @@
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                     </svg>
-                                    <span>Formal Attire</span>
+                                    <span data-i18n="events.ceremony.attire">Formal Attire</span>
                                 </div>
                             </div>
-                            <p class="event-description">
+                            <p class="event-description" data-i18n="events.ceremony.description">
                                 Join us as we exchange vows and begin our journey together as husband and wife. 
                                 The ceremony will be held in the beautiful Yeong Bin Gwan hall, followed by a 
                                 traditional Korean wedding celebration.
@@ -86,12 +91,12 @@
                     <div class="event-card">
                         <div class="event-date">
                             <span class="date-day">12</span>
-                            <span class="date-month">December</span>
+                            <span class="date-month" data-i18n="events.month.december">December</span>
                             <span class="date-year">2026</span>
                         </div>
                         <div class="event-content">
-                            <div class="event-badge">Reception</div>
-                            <h3>Wedding Reception</h3>
+                            <div class="event-badge" data-i18n="events.reception.badge">Reception</div>
+                            <h3 data-i18n="events.reception.title">Wedding Reception</h3>
                             <div class="event-details">
                                 <div class="detail-item">
                                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -114,10 +119,10 @@
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                     </svg>
-                                    <span>Cocktail / Semi-formal</span>
+                                    <span data-i18n="events.reception.attire">Cocktail / Semi-formal</span>
                                 </div>
                             </div>
-                            <p class="event-description">
+                            <p class="event-description" data-i18n="events.reception.description">
                                 Dinner, dancing, and celebration with our closest family and friends. 
                                 The reception will feature a delicious dinner, live music, and plenty 
                                 of dancing. We can't wait to celebrate with all of you!
@@ -128,12 +133,12 @@
                     <div class="event-card">
                         <div class="event-date">
                             <span class="date-day">13</span>
-                            <span class="date-month">December</span>
+                            <span class="date-month" data-i18n="events.month.december">December</span>
                             <span class="date-year">2026</span>
                         </div>
                         <div class="event-content">
-                            <div class="event-badge">Brunch</div>
-                            <h3>Farewell Brunch</h3>
+                            <div class="event-badge" data-i18n="events.brunch.badge">Brunch</div>
+                            <h3 data-i18n="events.brunch.title">Farewell Brunch</h3>
                             <div class="event-details">
                                 <div class="detail-item">
                                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -150,7 +155,7 @@
                                     <span>Shilla Hotel Restaurant</span>
                                 </div>
                             </div>
-                            <p class="event-description">
+                            <p class="event-description" data-i18n="events.brunch.description">
                                 Join us for a casual brunch before we say our goodbyes. This is a 
                                 relaxed gathering for those who want to spend a bit more time together 
                                 before heading home.
@@ -160,7 +165,7 @@
                 </div>
 
                 <div class="events-cta">
-                    <a href="rsvp.html" class="btn btn-primary">RSVP Now</a>
+                    <a href="rsvp.html" class="btn btn-primary" data-i18n="events.rsvpNow">RSVP Now</a>
                 </div>
             </div>
         </section>
@@ -168,7 +173,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">With love,</p>
+            <p class="footer-text" data-i18n="footer.withLove">With love,</p>
             <p class="footer-names">Clara & Tyler</p>
             <p class="footer-copy">&copy; 2026 Clara & Tyler</p>
         </div>

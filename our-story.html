@@ -15,26 +15,31 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Clara & Tyler</a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="our-story.html" class="active">Our Story</a>
-                <a href="events.html">Events</a>
-                <a href="travel.html">Travel</a>
-                <a href="photos.html">Photos</a>
-                <a href="rsvp.html">RSVP</a>
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="our-story.html" class="active" data-i18n="nav.ourStory">Our Story</a>
+                <a href="events.html" data-i18n="nav.events">Events</a>
+                <a href="travel.html" data-i18n="nav.travel">Travel</a>
+                <a href="photos.html" data-i18n="nav.photos">Photos</a>
+                <a href="rsvp.html" data-i18n="nav.rsvp">RSVP</a>
             </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+                    <span data-i18n="lang.en">EN</span> / <span data-i18n="lang.ko">한국어</span>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <main>
         <section class="page-hero">
             <div class="container">
-                <h1 class="page-title">Our Story</h1>
-                <p class="page-subtitle">The journey that brought us together</p>
+                <h1 class="page-title" data-i18n="story.pageTitle">Our Story</h1>
+                <p class="page-subtitle" data-i18n="story.pageSubtitle">The journey that brought us together</p>
             </div>
         </section>
 
@@ -42,7 +47,7 @@
             <div class="container">
                 <div class="story-content">
                     <div class="story-text">
-                        <p class="story-intro">
+                        <p class="story-intro" data-i18n="story.intro">
                             Our journey together began with a chance meeting that felt like destiny. 
                             From our first conversation, we knew there was something special between us.
                         </p>
@@ -51,8 +56,8 @@
                             <div class="timeline-item">
                                 <div class="timeline-year">2018</div>
                                 <div class="timeline-content">
-                                    <h3>How We Met</h3>
-                                    <p>
+                                    <h3 data-i18n="story.timeline.2018.title">How We Met</h3>
+                                    <p data-i18n="story.timeline.2018.text">
                                         We first crossed paths at a coffee shop in downtown Seoul. Tyler was studying 
                                         for his exams, and Clara was working on a design project. A simple "excuse me" 
                                         turned into a conversation that lasted hours. We talked about everything - our 
@@ -64,8 +69,8 @@
                             <div class="timeline-item">
                                 <div class="timeline-year">2019</div>
                                 <div class="timeline-content">
-                                    <h3>First Date</h3>
-                                    <p>
+                                    <h3 data-i18n="story.timeline.2019.title">First Date</h3>
+                                    <p data-i18n="story.timeline.2019.text">
                                         Our first official date was at Namsan Tower, watching the sunset over Seoul. 
                                         We knew then that this was the beginning of something beautiful. We spent the 
                                         evening talking and laughing, and by the end of the night, we both knew we had 
@@ -77,8 +82,8 @@
                             <div class="timeline-item">
                                 <div class="timeline-year">2021</div>
                                 <div class="timeline-content">
-                                    <h3>Moving In Together</h3>
-                                    <p>
+                                    <h3 data-i18n="story.timeline.2021.title">Moving In Together</h3>
+                                    <p data-i18n="story.timeline.2021.text">
                                         After two years of dating, we decided to take the next step and move in together. 
                                         It was a big decision, but it felt completely natural. We learned how to navigate 
                                         life as a team, supporting each other through work challenges, family events, 
@@ -90,8 +95,8 @@
                             <div class="timeline-item">
                                 <div class="timeline-year">2024</div>
                                 <div class="timeline-content">
-                                    <h3>The Proposal</h3>
-                                    <p>
+                                    <h3 data-i18n="story.timeline.2024.title">The Proposal</h3>
+                                    <p data-i18n="story.timeline.2024.text">
                                         On a beautiful spring day, Tyler proposed at the same spot where we had our first 
                                         date - Namsan Tower. Surrounded by cherry blossoms and the city we both love, 
                                         he got down on one knee and asked the question that would change our lives forever. 
@@ -103,8 +108,8 @@
                             <div class="timeline-item">
                                 <div class="timeline-year">2026</div>
                                 <div class="timeline-content">
-                                    <h3>Our Wedding Day</h3>
-                                    <p>
+                                    <h3 data-i18n="story.timeline.2026.title">Our Wedding Day</h3>
+                                    <p data-i18n="story.timeline.2026.text">
                                         Now, we're excited to celebrate our love with all of you. Our wedding day will be 
                                         a reflection of our journey together - filled with love, laughter, and the people 
                                         who mean the most to us. We can't wait to start this new chapter of our lives 
@@ -115,12 +120,12 @@
                         </div>
 
                         <div class="story-closing">
-                            <p>
+                            <p data-i18n="story.closing">
                                 We're so grateful for all the love and support we've received along the way. 
                                 Your presence at our wedding would mean the world to us as we begin this new 
                                 chapter together.
                             </p>
-                            <p class="story-signature">With all our love,<br><strong>Clara & Tyler</strong></p>
+                            <p class="story-signature" data-i18n="story.signature">With all our love,<br><strong>Clara & Tyler</strong></p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +135,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">With love,</p>
+            <p class="footer-text" data-i18n="footer.withLove">With love,</p>
             <p class="footer-names">Clara & Tyler</p>
             <p class="footer-copy">&copy; 2026 Clara & Tyler</p>
         </div>
